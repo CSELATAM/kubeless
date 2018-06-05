@@ -463,12 +463,10 @@ func populatePodSpec(funcObj *kubelessApi.Function, lr *langruntime.Langruntimes
 		if err != nil {
 			return err
 		}
-		if depsInstallContainer.Name != "" {
-			result.InitContainers = append(
-				result.InitContainers,
-				depsInstallContainer,
-			)
-		}
+		result.InitContainers = append(
+			result.InitContainers,
+			depsInstallContainer,
+		)
 	}
 
 	// add compilation init container if needed

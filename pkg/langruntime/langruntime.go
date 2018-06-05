@@ -235,7 +235,7 @@ func (l *Langruntimes) GetBuildContainer(runtime, depsChecksum string, env []v1.
 			"cd $GOPATH/src/kubeless",
 			"dep ensure > /dev/termination-log 2>&1")
 	case strings.Contains(runtime, "dotnetcore"):
-		return v1.Container{}, nil
+		return v1.Container{}, fmt.Errorf("dotnetcore does not require a dependencies file")
 	case strings.Contains(runtime, "java"):
 		command = appendToCommand(command,
 			"mv /kubeless/pom.xml /kubeless/function-pom.xml")
